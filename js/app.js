@@ -3,49 +3,7 @@
 
   var movies = [];
 
-  var getMovies = function(searchTerm) {
-    movies = [];
-
-    var $xhr = $.getJSON(`http://www.omdbapi.com/?s=${searchTerm}`);
-
-    $xhr.done(function(data) {
-      var results = data.Search;
-      var movie;
-
-      for (var result of results) {
-        movie = {
-          poster: result.Poster,
-          title: result.Title,
-          year: result.Year,
-          id: result.imdbID
-        };
-
-        getPlot(movie);
-      }
-    });
-
-    $xhr.fail(function(err) {
-      console.error(err);
-    });
-  };
-
-  var getPlot = function(movie) {
-    var $xhr = $.getJSON(`http://www.omdbapi.com/?i=${movie.id}&plot=full`);
-
-    $xhr.done(function(data) {
-      movie.plot = data.Plot;
-
-      movies.push(movie);
-
-      renderCards();
-    });
-
-    $xhr.fail(function(err) {
-      console.error(err);
-    });
-  };
-
-  var renderCards = function() {
+  var renderMovies = function() {
     $('#listings').empty();
 
     for (var movie of movies) {
@@ -96,6 +54,48 @@
 
       $('.modal-trigger').leanModal();
     }
+  };
+
+  var getMovies = function(searchTerm) {
+    movies = [];
+
+    var $xhr = $.getJSON(`http://www.omdbapi.com/?s=${searchTerm}`);
+
+    $xhr.done(function(data) {
+      var results = data.Search;
+      var movie;
+
+      for (var result of results) {
+        movie = {
+          poster: result.Poster,
+          title: result.Title,
+          year: result.Year,
+          id: result.imdbID
+        };
+
+        getPlot(movie);
+      }
+    });
+
+    $xhr.fail(function(err) {
+      console.error(err);
+    });
+  };
+
+  var getPlot = function(movie) {
+    var $xhr = $.getJSON(`http://www.omdbapi.com/?i=${movie.id}&plot=full`);
+
+    $xhr.done(function(data) {
+      movie.plot = data.Plot;
+
+      movies.push(movie);
+
+      renderMovies();
+    });
+
+    $xhr.fail(function(err) {
+      console.error(err);
+    });
   };
 
   $('form').on('submit', function(event) {

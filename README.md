@@ -1,11 +1,8 @@
-# AJAX Hero
+# Ajax Hero
 
-For your exercise today, you will make AJAX calls to the OMDb API using jQuery. The HTML and CSS files are all set up for you, now it's your job to dynamically manipulate the DOM with data returned from an API to create content.
+In this exercise, you're tasked with extending this web application by making Ajax calls to the OMDb API and updating the DOM. To get started, fork and clone this repository.
 
-To start off with, your site will look like this:
-
-![Screenshot of unfinished AJAX Hero]
-(img/screenshot2.png)
+![](screenshots/screenshot2.png)
 
 ### Exercise Goals
 
