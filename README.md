@@ -8,7 +8,7 @@ The web application should allow the user to browse movies by search keywords.
 
 ![](screenshots/search.gif)
 
-More specifically, you'll need to extend the existing JavaScript by adding the following behavior.
+More specifically, you'll need to extend the existing JavaScript with the following behavior.
 
 - Listen for submissions on the search form. Remember to prevent the default action.
 - Validate the user input is not blank.
@@ -32,7 +32,7 @@ The web application should also allow the user to view a movie's full plot by cl
 
 ![](screenshots/plot.gif)
 
-So while the application is handling the first HTTP response, you'll need to extend the existing JavaScript by adding the following behavior.
+So while the application is handling the first HTTP response, you'll need to extend your JavaScript with the following behavior.
 
 - Use the movie's unique imdb ID to send an HTTP request to the [OMDB API](http://omdbapi.com/) id endpoint.
 - Handle the HTTP response by pushing a new, well-formed JavaScript object into the global `movies` array.
