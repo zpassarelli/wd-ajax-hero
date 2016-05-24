@@ -28,13 +28,9 @@ Each well-formed `movie` object in the `movies` array must have the following ke
 
 ## Bonus
 
-The web application should also allow the user to view a movie's full plot.
+The web application should also allow the user to view a movie's full plot by clicking on the "Plot Synopsis".
 
 ![](screenshots/plot.gif)
-
-More specifically, the page should allow a user to do the following.
-
-- Click the "Plot Synopsis" button to spawn a modal with the corresponding movie's plot information.
 
 So while the application is handling the first HTTP response, you'll need to extend the existing JavaScript by adding the following behavior.
 
