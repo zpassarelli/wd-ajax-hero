@@ -32,7 +32,7 @@ The web application should also allow the user to view a movie's full plot by cl
 
 ![](screenshots/plot.gif)
 
-So while the application is handling the first HTTP response, you'll need to extend your JavaScript with the following behavior.
+While the application is handling the first HTTP response, you'll need to extend your JavaScript with the following behavior.
 
 - Stop pushing the `movie` object and rendering the `movies` array.
 - Use the movie's unique imdb ID to send an HTTP request to the [OMDB API](http://omdbapi.com/) id endpoint.
