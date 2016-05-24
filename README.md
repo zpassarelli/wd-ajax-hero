@@ -4,7 +4,7 @@ In this exercise, you're tasked with extending a web application to make Ajax ca
 
 ## Search
 
-Though you're free to style the page however you want, the page should behave something like this.
+The web application should allow the user to browse movies by search keywords.
 
 ![](screenshots/search.gif)
 
@@ -33,7 +33,7 @@ Each well-formed `movie` object in the `movies` array must have the following ke
 
 ## Bonus
 
-Though you're free to style the page however you want, the page should function like this something like this.
+The web application should also allow the user to view a movie's full plot.
 
 ![](screenshots/plot.gif)
 
