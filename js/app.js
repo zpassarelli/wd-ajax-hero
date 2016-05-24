@@ -49,29 +49,40 @@
     $('#listings').empty();
 
     for (var movie of movies) {
-      var $col = $('<div>').addClass('col s4');
-      var $card = $('<div>').addClass('card hoverable');
-      var $content = $('<div>').addClass('card-content');
-      var $title = $('<h6>').addClass('card-title').text(movie.title);
-      var $poster = $('<img>').addClass('responsive-img').attr({
+      var $col = $('<div class="col s4">');
+      var $card = $('<div class="card hoverable">');
+      var $content = $('<div class="card-content">');
+      var $title = $('<h6 class="card-title truncate">');
+
+      $title.attr({
+        'data-position': 'top',
+        'data-tooltip': movie.title
+      });
+
+      $title.tooltip({ delay: 50, });
+      $title.text(movie.title);
+
+      var $poster = $('<img class="poster responsive-img">');
+
+      $poster.attr({
         src: movie.poster,
         alt: `${movie.poster} Poster`
-      }).css({
-        height: '425px',
-        width: '100%'
       });
 
       $content.append($title, $poster);
       $card.append($content);
 
-      var $action = $('<div>').addClass('card-action');
-      var $plot = $('<a>').addClass('waves-effect waves-light btn modal-trigger').attr('href', `#${movie.id}`).text('Plot Synopsis');
+      var $action = $('<div class="card-action">');
+      var $plot = $('<a class="waves-effect waves-light btn modal-trigger">');
+
+      $plot.attr('href', `#${movie.id}`);
+      $plot.text('Plot Synopsis');
 
       $action.append($plot);
       $card.append($action);
 
-      var $modal = $('<div>').attr('id', `${movie.id}`).addClass('modal');
-      var $modalContent = $('<div>').addClass('modal-content');
+      var $modal = $(`<div id="${movie.id}" class="modal">`);
+      var $modalContent = $('<div class="modal-content">');
       var $modalHeader = $('<h4>').text(movie.title);
       var $movieYear = $('<h6>').text(`Released in ${movie.year}`);
       var $modalText = $('<p>').text(movie.plot);
@@ -88,6 +99,8 @@
   };
 
   $('form').on('submit', function(event) {
+    event.preventDefault();
+
     var searchTerm = $('#search').val();
 
     if (searchTerm.trim() === '') {
@@ -95,7 +108,5 @@
     }
 
     getMovies(searchTerm);
-
-    event.preventDefault();
   });
 })();

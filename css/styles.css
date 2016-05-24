@@ -13,6 +13,11 @@ main {
   margin-bottom: 15px;
 }
 
+.poster {
+  height: 425px;
+  width: 100%;
+}
+
 #omdb {
   text-decoration: underline;
 }
