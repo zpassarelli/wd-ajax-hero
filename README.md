@@ -19,7 +19,7 @@ You'll need to extend the existing JavaScript by adding the following behavior.
 - Validate the user input is not blank.
 - Clear the previous search results.
 - Send an HTTP request to the [OMDB API](http://omdbapi.com/) search endpoint.
-- Handle the HTTP response by pushing a new, well-formed JavaScript object onto the global `movies` array.
+- Handle the HTTP response by pushing a new, well-formed JavaScript object into the global `movies` array.
 - Render the `movies` array to the page by calling the `renderMovies()` function with no arguments.
 
 Each object in the `movies` array must be well-formed with the following key-value pairs.
@@ -39,4 +39,8 @@ Though you're free to style the page however you want, the page should function 
 
 More specifically, the page should allow a user to do the following.
 
-- Click the "Plot Synopsis" button to popup a modal with the respective movie's plot information.
+- Click the "Plot Synopsis" button to spawn a modal with the corresponding movie's plot information.
+
+You'll need to extend the existing JavaScript by adding the following behavior.
+
+- Use the movie's unique imdb ID to send an HTTP request to the [OMDB API](http://omdbapi.com/) id endpoint.
