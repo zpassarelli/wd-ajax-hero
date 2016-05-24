@@ -4,17 +4,30 @@ In this exercise, you're tasked with extending this web application by making Aj
 
 ## Search
 
-Though you're free to style the page however you want, the page should function like this something like this.
+Though you're free to style the page however you want, the page should behave something like this.
 
 ![](screenshots/search.gif)
 
 More specifically, the page should allow a user to do the following.
 
-- Search for movies using keywords (e.g. "star wars")
-- Update the page with the search results.
+- Search for movies using keywords (e.g. "star wars").
+- Update the page with the move search results from OMDb.
 
+You'll need to extend the existing JavaScript by adding the following behavior.
 
-- Render the movies to the page using the provided `renderMovies()` function.
+- Listen for submissions on the search form. Remember to prevent the default action.
+- Validate the user input is not blank.
+- Clear the previous search results.
+- Send an HTTP request to the [OMDB API](http://omdbapi.com/) search endpoint.
+- Handle the HTTP response by pushing a new JavaScript object, with the following keys-value pairs, onto the global `movies` array.
+- Render the `movies` array to the page by calling the `renderMovies()` function with no arguments.
+
+| Key      | Value                               |
+|----------|-------------------------------------|
+| `id`     | The movie's unique imdb ID number.' |
+| `poster` | The URL to the movie's poster image |
+| `title`  | The title of the movie.             |
+| `year`   | The year of the movie's release.    |
 
 ## Bonus
 

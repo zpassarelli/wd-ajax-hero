@@ -67,10 +67,10 @@
 
       for (var result of results) {
         movie = {
+          id: result.imdbID,
           poster: result.Poster,
           title: result.Title,
-          year: result.Year,
-          id: result.imdbID
+          year: result.Year
         };
 
         getPlot(movie);
