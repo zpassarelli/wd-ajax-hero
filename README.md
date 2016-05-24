@@ -8,25 +8,20 @@ Though you're free to style the page however you want, the page should function 
 
 ![](screenshots/search.gif)
 
-- Hard code your website to display data without using a search field, e.g. your first call should be a search for "Star Wars"
-- Dynamically create content using Materialize elements such as rows, columns, and cards
-- Each card should display the movie title, poster, and a link to plot synopsis
+More specifically, the page should allow a user to do the following.
 
-> **HINT:** Since not all the poster images returned from OMDb are the same size, feel free to set all your image height/width the same so the cards will align better
+- Search for movies using keywords (e.g. "star wars")
+- Update the page with the search results.
 
-##### Goal 2:
 
-- When a user clicks on the "Plot Synopsis" button, display the plot using a modal
-- The modal should display the title, release year, and full plot
+- Render the movies to the page using the provided `renderMovies()` function.
 
-![Screenshot of opened modal]
-(img/screenshot3.png)
+## Bonus
 
-##### BONUS Goal:
+Though you're free to style the page however you want, the page should function like this something like this.
 
-- Add an input field that allows users to search for any movie they'd like
+![](screenshots/plot.gif)
 
-In the end, your website could look something like this, but feel free to get creative with color, design, search features, etc:
+More specifically, the page should allow a user to do the following.
 
-![Screenshot of finished AJAX Hero]
-(img/screenshot1.png)
+- Click the "Plot Synopsis" button to popup a modal with the respective movie's plot information.
