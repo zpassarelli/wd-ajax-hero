@@ -47,6 +47,8 @@ You'll need to extend the existing JavaScript by adding the following behavior.
 - Handle the HTTP response by pushing a new, well-formed JavaScript object into the global `movies` array.
 - Render the `movies` array to the page by calling the `renderMovies()` function with no arguments.
 
+Each well-formed `movie` object in the `movies` array must have the following additional key-value pairs.
+
 | Key    | Value                 |
 |--------|-----------------------|
 | `plot` | The movie's full plot |
