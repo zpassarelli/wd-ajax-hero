@@ -1,6 +1,6 @@
 # Ajax Hero
 
-In this exercise, you're tasked with extending this web application by making Ajax calls to the OMDb API and updating the DOM. To get started, fork and clone this repository.
+In this exercise, you're tasked with extending a web application to make Ajax calls to the OMDb API and update the DOM. To get started, fork and clone this repository.
 
 ## Search
 
