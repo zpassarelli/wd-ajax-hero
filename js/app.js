@@ -7,9 +7,9 @@
     $('#listings').empty();
 
     for (var movie of movies) {
-      var $col = $('<div class="col s4">');
+      var $col = $('<div class="col s6">');
       var $card = $('<div class="card hoverable">');
-      var $content = $('<div class="card-content">');
+      var $content = $('<div class="card-content center">');
       var $title = $('<h6 class="card-title truncate">');
 
       $title.attr({
@@ -30,7 +30,7 @@
       $content.append($title, $poster);
       $card.append($content);
 
-      var $action = $('<div class="card-action">');
+      var $action = $('<div class="card-action center">');
       var $plot = $('<a class="waves-effect waves-light btn modal-trigger">');
 
       $plot.attr('href', `#${movie.id}`);
