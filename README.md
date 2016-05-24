@@ -2,11 +2,11 @@
 
 In this exercise, you're tasked with extending this web application by making Ajax calls to the OMDb API and updating the DOM. To get started, fork and clone this repository.
 
-![](screenshots/screenshot2.png)
+## Search
 
-### Exercise Goals
+Though you're free to style the page however you want, the page should function like this something like this.
 
-##### Goal 1:
+![](screenshots/search.gif)
 
 - Hard code your website to display data without using a search field, e.g. your first call should be a search for "Star Wars"
 - Dynamically create content using Materialize elements such as rows, columns, and cards
