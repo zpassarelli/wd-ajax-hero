@@ -19,14 +19,14 @@ You'll need to extend the existing JavaScript by adding the following behavior.
 - Validate the user input is not blank.
 - Clear the previous search results.
 - Send an HTTP request to the [OMDB API](http://omdbapi.com/) search endpoint.
-- Handle the HTTP response by pushing a new, well-formed JavaScript object into the global `movies` array.
+- Handle the HTTP response by pushing a new, well-formed `movie` object into the global `movies` array.
 - Render the `movies` array to the page by calling the `renderMovies()` function with no arguments.
 
-Each object in the `movies` array must be well-formed with the following key-value pairs.
+Each well-formed `movie` object in the `movies` array must have the following key-value pairs.
 
 | Key      | Value                               |
 |----------|-------------------------------------|
-| `id`     | The movie's unique imdb ID number.' |
+| `id`     | The movie's unique imdb ID number.  |
 | `poster` | The URL to the movie's poster image |
 | `title`  | The title of the movie.             |
 | `year`   | The year of the movie's release.    |
@@ -44,3 +44,11 @@ More specifically, the page should allow a user to do the following.
 You'll need to extend the existing JavaScript by adding the following behavior.
 
 - Use the movie's unique imdb ID to send an HTTP request to the [OMDB API](http://omdbapi.com/) id endpoint.
+- Handle the HTTP response by pushing a new, well-formed JavaScript object into the global `movies` array.
+- Render the `movies` array to the page by calling the `renderMovies()` function with no arguments.
+
+| Key    | Value                 |
+|--------|-----------------------|
+| `plot` | The movie's full plot |
+
+**TIP:** You may want to hold off with pushing the `movie` object and rendering the `movies` array until the second HTTP response is handled.
