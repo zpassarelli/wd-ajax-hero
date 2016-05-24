@@ -2,60 +2,51 @@
   'use strict';
 
   var movies = [];
-  var $listings = $('#listings');
-  var $search = $('#search');
-  var $form = $('form');
 
-  $form.on('submit', function(event) {
-    var searchTerm = $search.val();
+  var getMovies = function(searchTerm) {
+    movies = [];
 
-    if (searchTerm) {
-      movies = [];
-      getContent(searchTerm);
-    }
+    var $xhr = $.getJSON(`http://www.omdbapi.com/?s=${searchTerm}`);
 
-    event.preventDefault();
-  });
+    $xhr.done(function(data) {
+      var results = data.Search;
+      var movie;
 
-  var getContent = function(searchTerm) {
-    $.ajax({
-      method: 'GET',
-      url: `http://www.omdbapi.com/?s=${searchTerm}`
-    })
-    .done(function(data) {
-      var search = data.Search;
+      for (var result of results) {
+        movie = {
+          poster: result.Poster,
+          title: result.Title,
+          year: result.Year,
+          id: result.imdbID
+        };
 
-      for (var i = 0; i < search.length; i++) {
-        var movie = {};
-        movie.poster = search[i].Poster;
-        movie.title = search[i].Title;
-        movie.year = search[i].Year;
-        movie.id = search[i].imdbID;
-        movies.push(movie);
         getPlot(movie);
       }
-    })
-    .fail(function(err) {
+    });
+
+    $xhr.fail(function(err) {
       console.error(err);
     });
   };
 
   var getPlot = function(movie) {
-    $.ajax({
-      method: 'GET',
-      url: `http://www.omdbapi.com/?i=${movie.id}&plot=full`
-    })
-    .done(function(data) {
+    var $xhr = $.getJSON(`http://www.omdbapi.com/?i=${movie.id}&plot=full`);
+
+    $xhr.done(function(data) {
       movie.plot = data.Plot;
+
+      movies.push(movie);
+
       renderCards();
-    })
-    .fail(function(err) {
+    });
+
+    $xhr.fail(function(err) {
       console.error(err);
     });
   };
 
   var renderCards = function() {
-    $listings.empty();
+    $('#listings').empty();
 
     for (var movie of movies) {
       var $col = $('<div>').addClass('col s4');
@@ -90,10 +81,21 @@
 
       $col.append($card, $modal);
 
-      $listings.append($col);
+      $('#listings').append($col);
 
       $('.modal-trigger').leanModal();
     }
   };
 
+  $('form').on('submit', function(event) {
+    var searchTerm = $('#search').val();
+
+    if (searchTerm.trim() === '') {
+      return;
+    }
+
+    getMovies(searchTerm);
+
+    event.preventDefault();
+  });
 })();

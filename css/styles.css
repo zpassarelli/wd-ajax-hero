@@ -12,3 +12,7 @@ main {
 .navbar-fixed {
   margin-bottom: 15px;
 }
+
+#omdb {
+  text-decoration: underline;
+}
