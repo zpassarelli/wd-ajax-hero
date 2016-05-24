@@ -8,12 +8,7 @@ The web application should allow the user to browse movies by search keywords.
 
 ![](screenshots/search.gif)
 
-More specifically, the page should allow a user to do the following.
-
-- Search for movies using keywords (e.g. "star wars").
-- Update the page with the move search results from OMDb.
-
-You'll need to extend the existing JavaScript by adding the following behavior.
+More specifically, you'll need to extend the existing JavaScript by adding the following behavior.
 
 - Listen for submissions on the search form. Remember to prevent the default action.
 - Validate the user input is not blank.
@@ -41,7 +36,7 @@ More specifically, the page should allow a user to do the following.
 
 - Click the "Plot Synopsis" button to spawn a modal with the corresponding movie's plot information.
 
-You'll need to extend the existing JavaScript by adding the following behavior.
+So while the application is handling the first HTTP response, you'll need to extend the existing JavaScript by adding the following behavior.
 
 - Use the movie's unique imdb ID to send an HTTP request to the [OMDB API](http://omdbapi.com/) id endpoint.
 - Handle the HTTP response by pushing a new, well-formed JavaScript object into the global `movies` array.
