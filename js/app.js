@@ -62,7 +62,13 @@
       var $card = $('<div>').addClass('card hoverable');
       var $content = $('<div>').addClass('card-content');
       var $title = $('<h6>').addClass('card-title').text(movie.title);
-      var $poster = $('<img>').addClass('responsive-img').attr('src', movie.poster);
+      var $poster = $('<img>').addClass('responsive-img').attr({
+        src: movie.poster,
+        alt: `${movie.poster} Poster`
+      }).css({
+        height: '425px',
+        width: '100%'
+      });
 
       $content.append($title, $poster);
       $card.append($content);
@@ -76,9 +82,10 @@
       var $modal = $('<div>').attr('id', `${movie.id}`).addClass('modal');
       var $modalContent = $('<div>').addClass('modal-content');
       var $modalHeader = $('<h4>').text(movie.title);
+      var $movieYear = $('<h6>').text(`Released in ${movie.year}`);
       var $modalText = $('<p>').text(movie.plot);
 
-      $modalContent.append($modalHeader, $modalText);
+      $modalContent.append($modalHeader, $movieYear, $modalText);
       $modal.append($modalContent);
 
       $col.append($card, $modal);

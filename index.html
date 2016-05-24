@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>API Practice</title>
+    <title>AJAX Hero</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="css/materialize.min.css" />
@@ -17,48 +17,44 @@
       <nav>
         <div class="nav-wrapper">
           <div class="container">
-            <a href="#" class="brand-logo center">OMDb API</a>
+            <a href="index.html" class="brand-logo center"><i class="material-icons left">movie_filter</i>AJAX Hero</a>
           </div>
         </div>
       </nav>
     </div>
 
     <main class="container">
+      
       <div class="row">
         <form>
           <div class="col offset-s2 s8">
             <div class="input-field">
-              <input type="text" placeholder="Search by movie title e.g. Jumanji" id="search" name="search" />
+              <input type="text" placeholder="Enter movie title e.g. Jumanji" id="search" name="search" />
             </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">
+            <button class="right btn waves-effect waves-light" type="submit" name="action">
               Search
               <i class="material-icons right">send</i>
             </button>
           </div>
         </form>
       </div>
+
       <div id="listings" class="row"></div>
+
     </main>
 
     <footer class="page-footer">
       <div class="container">
         <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-            </ul>
+          <div class="col s12">
+            <h5><a class="grey-text text-lighten-4" href="http://omdbapi.com/"><i class="material-icons">cached</i> Courtesy of Open Movie Database</a></h5>
           </div>
         </div>
       </div>
       <div class="footer-copyright">
         <div class="container">
         Copyright &copy; 2016
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        <a class="right waves-effect waves-light btn red lighten-3 grey-text text-lighten-4" href="https://www.youtube.com/watch?v=oHg5SJYRHA0"><i class="material-icons left">queue_music</i>link</a>
         </div>
       </div>
     </footer>
