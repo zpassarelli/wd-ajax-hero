@@ -19,8 +19,10 @@ You'll need to extend the existing JavaScript by adding the following behavior.
 - Validate the user input is not blank.
 - Clear the previous search results.
 - Send an HTTP request to the [OMDB API](http://omdbapi.com/) search endpoint.
-- Handle the HTTP response by pushing a new JavaScript object, with the following keys-value pairs, onto the global `movies` array.
+- Handle the HTTP response by pushing a new, well-formed JavaScript object onto the global `movies` array.
 - Render the `movies` array to the page by calling the `renderMovies()` function with no arguments.
+
+Each object in the `movies` array must be well-formed with the following key-value pairs.
 
 | Key      | Value                               |
 |----------|-------------------------------------|
