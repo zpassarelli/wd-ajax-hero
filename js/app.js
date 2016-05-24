@@ -62,7 +62,7 @@
       $title.tooltip({ delay: 50, });
       $title.text(movie.title);
 
-      var $poster = $('<img class="poster responsive-img">');
+      var $poster = $('<img class="poster">');
 
       $poster.attr({
         src: movie.poster,
