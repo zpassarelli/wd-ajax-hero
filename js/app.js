@@ -1,26 +1,25 @@
 (function() {
   'use strict';
 
-  var movies = [];
+  let movies = [];
 
-  var renderMovies = function() {
+  const renderMovies = function() {
     $('#listings').empty();
 
-    for (var movie of movies) {
-      var $col = $('<div class="col s6">');
-      var $card = $('<div class="card hoverable">');
-      var $content = $('<div class="card-content center">');
-      var $title = $('<h6 class="card-title truncate">');
+    for (const movie of movies) {
+      const $col = $('<div>').addClass('col s6');
+      const $card = $('<div>').addClass('card hoverable');
+      const $content = $('<div>').addClass('card-content center');
+      const $title = $('<h6>').addClass('card-title truncate');
 
       $title.attr({
         'data-position': 'top',
         'data-tooltip': movie.title
       });
 
-      $title.tooltip({ delay: 50, });
-      $title.text(movie.title);
+      $title.tooltip({ delay: 50 }).text(movie.title);
 
-      var $poster = $('<img class="poster">');
+      const $poster = $('<img>').addClass('poster');
 
       $poster.attr({
         src: movie.poster,
@@ -30,20 +29,21 @@
       $content.append($title, $poster);
       $card.append($content);
 
-      var $action = $('<div class="card-action center">');
-      var $plot = $('<a class="waves-effect waves-light btn modal-trigger">');
+      const $action = $('<div>').addClass('card-action center');
+      const $plot = $('<a>');
 
+      $plot.addClass('waves-effect waves-light btn modal-trigger');
       $plot.attr('href', `#${movie.id}`);
       $plot.text('Plot Synopsis');
 
       $action.append($plot);
       $card.append($action);
 
-      var $modal = $(`<div id="${movie.id}" class="modal">`);
-      var $modalContent = $('<div class="modal-content">');
-      var $modalHeader = $('<h4>').text(movie.title);
-      var $movieYear = $('<h6>').text(`Released in ${movie.year}`);
-      var $modalText = $('<p>').text(movie.plot);
+      const $modal = $('<div>').addClass('modal').attr('id', movie.id);
+      const $modalContent = $('<div>').addClass('modal-content');
+      const $modalHeader = $('<h4>').text(movie.title);
+      const $movieYear = $('<h6>').text(`Released in ${movie.year}`);
+      const $modalText = $('<p>').text(movie.plot);
 
       $modalContent.append($modalHeader, $movieYear, $modalText);
       $modal.append($modalContent);
@@ -56,17 +56,16 @@
     }
   };
 
-  var getMovies = function(searchTerm) {
+  const getMovies = function(searchTerm) {
     movies = [];
 
-    var $xhr = $.getJSON(`http://www.omdbapi.com/?s=${searchTerm}`);
+    const $xhr = $.getJSON(`http://www.omdbapi.com/?s=${searchTerm}`);
 
-    $xhr.done(function(data) {
-      var results = data.Search;
-      var movie;
+    $xhr.done((data) => {
+      const results = data.Search;
 
       for (var result of results) {
-        movie = {
+        const movie = {
           id: result.imdbID,
           poster: result.Poster,
           title: result.Title,
@@ -77,15 +76,15 @@
       }
     });
 
-    $xhr.fail(function(err) {
+    $xhr.fail((err) => {
       console.error(err);
     });
   };
 
-  var getPlot = function(movie) {
-    var $xhr = $.getJSON(`http://www.omdbapi.com/?i=${movie.id}&plot=full`);
+  const getPlot = function(movie) {
+    const $xhr = $.getJSON(`http://www.omdbapi.com/?i=${movie.id}&plot=full`);
 
-    $xhr.done(function(data) {
+    $xhr.done((data) => {
       movie.plot = data.Plot;
 
       movies.push(movie);
@@ -93,15 +92,15 @@
       renderMovies();
     });
 
-    $xhr.fail(function(err) {
+    $xhr.fail((err) => {
       console.error(err);
     });
   };
 
-  $('form').on('submit', function(event) {
+  $('form').on('submit', (event) => {
     event.preventDefault();
 
-    var searchTerm = $('#search').val();
+    const searchTerm = $('#search').val();
 
     if (searchTerm.trim() === '') {
       return;
