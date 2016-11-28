@@ -64,7 +64,7 @@
     $xhr.done((data) => {
       const results = data.Search;
 
-      for (var result of results) {
+      for (const result of results) {
         const movie = {
           id: result.imdbID,
           poster: result.Poster,
