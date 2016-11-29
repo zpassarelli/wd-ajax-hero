@@ -17,8 +17,7 @@
         'data-tooltip': movie.title
       });
 
-      $title.tooltip({ delay: 50, });
-      $title.text(movie.title);
+      $title.tooltip({ delay: 50 }).text(movie.title);
 
       const $poster = $('<img>').addClass('poster');
 
@@ -40,13 +39,12 @@
       $action.append($plot);
       $card.append($action);
 
-      const $modal = $('<div>').addClass('modal');
+      const $modal = $('<div>').addClass('modal').attr('id', movie.id);
       const $modalContent = $('<div>').addClass('modal-content');
       const $modalHeader = $('<h4>').text(movie.title);
       const $movieYear = $('<h6>').text(`Released in ${movie.year}`);
       const $modalText = $('<p>').text(movie.plot);
 
-      $modal.attr('id', movie.id)
       $modalContent.append($modalHeader, $movieYear, $modalText);
       $modal.append($modalContent);
 
