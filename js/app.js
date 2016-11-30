@@ -5,6 +5,7 @@
 
   const renderMovies = function() {
     $('#listings').empty();
+    $('.material-tooltip').remove();
 
     for (const movie of movies) {
       const $col = $('<div>').addClass('col s6');
@@ -59,7 +60,11 @@
   const getMovies = function(searchTerm) {
     movies = [];
 
-    const $xhr = $.getJSON(`http://www.omdbapi.com/?s=${searchTerm}`);
+    const $xhr = $.ajax({
+      method: 'GET',
+      url: `http://www.omdbapi.com/?s=${searchTerm}`,
+      dataType: 'json'
+    });
 
     $xhr.done((data) => {
       const results = data.Search;
@@ -82,7 +87,11 @@
   };
 
   const getPlot = function(movie) {
-    const $xhr = $.getJSON(`http://www.omdbapi.com/?i=${movie.id}&plot=full`);
+    const $xhr = $.ajax({
+      method: 'GET',
+      url: `http://www.omdbapi.com/?i=${movie.id}&plot=full`,
+      dataType: 'json'
+    });
 
     $xhr.done((data) => {
       movie.plot = data.Plot;
