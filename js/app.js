@@ -63,23 +63,29 @@
       $('#search').toggleClass('invalid');
       //$('.input-field').append('<label for="search" data-error="Enter a search term."></label>');
     } else {
-      $('#listings').empty();
       movies.length = 0;
       search = search.replace(' ','+');
       $.ajax({
         method: "GET",
         url: "http://www.omdbapi.com/?s="+search,
         success: function(data){
-          for(var i = 0; i < data['Search'].length; i++){
-            var movObj = {
-              'id': data['Search'][i]['imdbID'],
-              'poster': data['Search'][i]['Poster'],
-              'title': data['Search'][i]['Title'],
-              'year': data['Search'][i]['Year']
-            };
-            movies.push(movObj);
+          for(var i = 0; i < data.Search.length; i++){
+            $.ajax({
+              method: "GET",
+              url: "http://www.omdbapi.com/?i="+data.Search[i].imdbID,
+              success: function(synopsisData){
+                var movObj = {
+                  'id': synopsisData.imdbID,
+                  'poster': synopsisData.Poster,
+                  'title': synopsisData.Title,
+                  'year': synopsisData.Year,
+                  'plot': synopsisData.Plot
+                };
+                movies.push(movObj);
+                renderMovies();
+              }
+            });
           }
-          renderMovies();
         }
       });
     }
