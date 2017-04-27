@@ -59,32 +59,37 @@
   $('button').on('click',function(){
     event.preventDefault();
     var search = $('#search').val();
-    if(search ===''){
+    if(search.length === 0){
       $('#search').toggleClass('invalid');
       //$('.input-field').append('<label for="search" data-error="Enter a search term."></label>');
     } else {
+      $('#search').removeClass('invalid');
       movies.length = 0;
       search = search.replace(' ','+');
       $.ajax({
         method: "GET",
         url: "http://www.omdbapi.com/?s="+search,
         success: function(data){
-          for(var i = 0; i < data.Search.length; i++){
-            $.ajax({
-              method: "GET",
-              url: "http://www.omdbapi.com/?i="+data.Search[i].imdbID,
-              success: function(synopsisData){
-                var movObj = {
-                  'id': synopsisData.imdbID,
-                  'poster': synopsisData.Poster,
-                  'title': synopsisData.Title,
-                  'year': synopsisData.Year,
-                  'plot': synopsisData.Plot
-                };
-                movies.push(movObj);
-                renderMovies();
-              }
-            });
+          if(data.Response === "False"){
+            $('#listings').empty().append("<p>No results found!</p>");
+          } else {
+            for(var i = 0; i < data.Search.length; i++){
+              $.ajax({
+                method: "GET",
+                url: "http://www.omdbapi.com/?i="+data.Search[i].imdbID,
+                success: function(synopsisData){
+                  var movObj = {
+                    'id': synopsisData.imdbID,
+                    'poster': synopsisData.Poster,
+                    'title': synopsisData.Title,
+                    'year': synopsisData.Year,
+                    'plot': synopsisData.Plot
+                  };
+                  movies.push(movObj);
+                  renderMovies();
+                }
+              });
+            }
           }
         }
       });
